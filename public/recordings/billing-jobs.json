@@ -1,0 +1,652 @@
+{
+  "version": 1,
+  "scenarioId": "billing-jobs",
+  "datasetHash": "091ab7b2863810aeb9185d8847f5e1fa53cf1eb04e5b3b67e4ad643b7e165b49",
+  "recordedAt": "2026-09-26T02:14:24.632Z",
+  "host": "OpenAI Responses API · local MCP client",
+  "model": "gpt-6-luna (confirmed by every API response)",
+  "reviewed": true,
+  "events": [
+    {
+      "type": "user",
+      "text": "Who should review a change spanning billing and background jobs? Compare the evidence separately for each subsystem and inspect relevant PRs.",
+      "evidenceIds": []
+    },
+    {
+      "type": "tool",
+      "name": "list_subsystems",
+      "arguments": {},
+      "result": {
+        "subsystems": [
+          {
+            "id": "authentication",
+            "name": "Authentication",
+            "description": "Sessions, token rotation, SSO, and account access."
+          },
+          {
+            "id": "billing",
+            "name": "Billing",
+            "description": "Invoices, payment events, and subscription state."
+          },
+          {
+            "id": "background-jobs",
+            "name": "Background jobs",
+            "description": "Queue execution, retry policies, and scheduled work."
+          },
+          {
+            "id": "observability",
+            "name": "Observability",
+            "description": "Operational traces, metrics, and diagnostic context."
+          }
+        ],
+        "asOf": "2026-06-30",
+        "fictional": true
+      },
+      "durationMs": 3
+    },
+    {
+      "type": "tool",
+      "name": "find_contributors",
+      "arguments": {
+        "subsystemId": "billing"
+      },
+      "result": {
+        "findings": [
+          {
+            "contributor": {
+              "id": "jonas",
+              "name": "Jonas Weber",
+              "initials": "JW",
+              "title": "Payments engineer",
+              "color": "amber",
+              "bio": "Focuses on payment events, invoice state, and subscription changes. His recent authored PRs show billing implementation and one shared billing-to-jobs boundary."
+            },
+            "recentAuthored": 5,
+            "recentReviewed": 5,
+            "latestContribution": "2026-06-21",
+            "classification": "recent-authorship",
+            "pullRequestIds": [
+              "PR-109",
+              "PR-137",
+              "PR-110",
+              "PR-146",
+              "PR-118",
+              "PR-105",
+              "PR-111",
+              "PR-143",
+              "PR-112",
+              "PR-155",
+              "PR-114",
+              "PR-113",
+              "PR-115"
+            ],
+            "limitation": "Contribution evidence is not proof of ownership, availability, or overall ability."
+          },
+          {
+            "contributor": {
+              "id": "owen",
+              "name": "Owen Clarke",
+              "initials": "OC",
+              "title": "Payments integration engineer",
+              "color": "olive",
+              "bio": "Maintains provider integration edges such as webhook verification and retry-safe response mapping. The sample does not imply ownership of every billing service."
+            },
+            "recentAuthored": 3,
+            "recentReviewed": 1,
+            "latestContribution": "2026-06-25",
+            "classification": "recent-authorship",
+            "pullRequestIds": [
+              "PR-145",
+              "PR-146",
+              "PR-147",
+              "PR-139",
+              "PR-148"
+            ],
+            "limitation": "Contribution evidence is not proof of ownership, availability, or overall ability."
+          },
+          {
+            "contributor": {
+              "id": "anika",
+              "name": "Anika Rao",
+              "initials": "AR",
+              "title": "Subscriptions engineer",
+              "color": "teal",
+              "bio": "Works on subscription lifecycle and customer-visible billing history. Her PRs separate policy decisions from payment-provider mechanics."
+            },
+            "recentAuthored": 3,
+            "recentReviewed": 1,
+            "latestContribution": "2026-06-14",
+            "classification": "recent-authorship",
+            "pullRequestIds": [
+              "PR-141",
+              "PR-138",
+              "PR-142",
+              "PR-143",
+              "PR-144"
+            ],
+            "limitation": "Contribution evidence is not proof of ownership, availability, or overall ability."
+          },
+          {
+            "contributor": {
+              "id": "mateo",
+              "name": "Mateo Ruiz",
+              "initials": "MR",
+              "title": "Ledger engineer",
+              "color": "amber",
+              "bio": "Builds invoice and ledger invariants. His records emphasize reconciliation and audit trails, with reviews that question ambiguous money state."
+            },
+            "recentAuthored": 3,
+            "recentReviewed": 1,
+            "latestContribution": "2026-06-14",
+            "classification": "recent-authorship",
+            "pullRequestIds": [
+              "PR-141",
+              "PR-137",
+              "PR-138",
+              "PR-139",
+              "PR-140"
+            ],
+            "limitation": "Contribution evidence is not proof of ownership, availability, or overall ability."
+          },
+          {
+            "contributor": {
+              "id": "priya",
+              "name": "Priya Shah",
+              "initials": "PS",
+              "title": "Infrastructure engineer",
+              "color": "purple",
+              "bio": "Works on queue execution, retry behavior, and the outbox handoff. Her reviews connect background processing with billing delivery guarantees."
+            },
+            "recentAuthored": 1,
+            "recentReviewed": 3,
+            "latestContribution": "2026-06-21",
+            "classification": "recent-authorship",
+            "pullRequestIds": [
+              "PR-109",
+              "PR-118",
+              "PR-111",
+              "PR-147"
+            ],
+            "limitation": "Contribution evidence is not proof of ownership, availability, or overall ability."
+          },
+          {
+            "contributor": {
+              "id": "rafael",
+              "name": "Rafael Costa",
+              "initials": "RC",
+              "title": "Workflow engineer",
+              "color": "blue",
+              "bio": "Works on long-running workflow state and retries. His reviewed PRs connect background jobs to billing without implying that he owns payments."
+            },
+            "recentAuthored": 1,
+            "recentReviewed": 0,
+            "latestContribution": "2026-01-28",
+            "classification": "recent-authorship",
+            "pullRequestIds": [
+              "PR-155"
+            ],
+            "limitation": "Contribution evidence is not proof of ownership, availability, or overall ability."
+          },
+          {
+            "contributor": {
+              "id": "eli",
+              "name": "Eli Brooks",
+              "initials": "EB",
+              "title": "Product engineer",
+              "color": "blue",
+              "bio": "Reviews authentication behavior from the product edge and has written billing presentation code. His review history is evidence of context, not ownership."
+            },
+            "recentAuthored": 0,
+            "recentReviewed": 3,
+            "latestContribution": "2026-05-11",
+            "classification": "review-only",
+            "pullRequestIds": [
+              "PR-110",
+              "PR-142",
+              "PR-112",
+              "PR-113"
+            ],
+            "limitation": "Contribution evidence is not proof of ownership, availability, or overall ability."
+          },
+          {
+            "contributor": {
+              "id": "imani",
+              "name": "Imani Reed",
+              "initials": "IR",
+              "title": "Security engineer",
+              "color": "rose",
+              "bio": "Works on account recovery safeguards and authentication auditability. Her contributions focus on abuse resistance rather than general incident recovery."
+            },
+            "recentAuthored": 0,
+            "recentReviewed": 1,
+            "latestContribution": "2026-06-25",
+            "classification": "review-only",
+            "pullRequestIds": [
+              "PR-145"
+            ],
+            "limitation": "Contribution evidence is not proof of ownership, availability, or overall ability."
+          },
+          {
+            "contributor": {
+              "id": "maya",
+              "name": "Maya Chen",
+              "initials": "MC",
+              "title": "Platform engineer",
+              "color": "teal",
+              "bio": "Works on session lifecycle and account boundaries. Her recent authored changes cover token rotation, callback state, credential changes, and sign-out behavior."
+            },
+            "recentAuthored": 0,
+            "recentReviewed": 1,
+            "latestContribution": "2026-04-13",
+            "classification": "review-only",
+            "pullRequestIds": [
+              "PR-105"
+            ],
+            "limitation": "Contribution evidence is not proof of ownership, availability, or overall ability."
+          },
+          {
+            "contributor": {
+              "id": "leah",
+              "name": "Leah Okafor",
+              "initials": "LO",
+              "title": "Staff engineer",
+              "color": "rose",
+              "bio": "Authored several early platform foundations and test fixtures. Those records are useful history, while later implementation may better represent current context."
+            },
+            "recentAuthored": 0,
+            "recentReviewed": 0,
+            "latestContribution": "2025-12-09",
+            "classification": "older-evidence",
+            "pullRequestIds": [
+              "PR-114",
+              "PR-144",
+              "PR-148",
+              "PR-140",
+              "PR-115"
+            ],
+            "limitation": "Contribution evidence is not proof of ownership, availability, or overall ability."
+          }
+        ]
+      },
+      "durationMs": 6
+    },
+    {
+      "type": "tool",
+      "name": "find_contributors",
+      "arguments": {
+        "subsystemId": "background-jobs"
+      },
+      "result": {
+        "findings": [
+          {
+            "contributor": {
+              "id": "priya",
+              "name": "Priya Shah",
+              "initials": "PS",
+              "title": "Infrastructure engineer",
+              "color": "purple",
+              "bio": "Works on queue execution, retry behavior, and the outbox handoff. Her reviews connect background processing with billing delivery guarantees."
+            },
+            "recentAuthored": 4,
+            "recentReviewed": 7,
+            "latestContribution": "2026-06-22",
+            "classification": "recent-authorship",
+            "pullRequestIds": [
+              "PR-149",
+              "PR-109",
+              "PR-116",
+              "PR-117",
+              "PR-118",
+              "PR-154",
+              "PR-119",
+              "PR-159",
+              "PR-147",
+              "PR-120",
+              "PR-163",
+              "PR-121"
+            ],
+            "limitation": "Contribution evidence is not proof of ownership, availability, or overall ability."
+          },
+          {
+            "contributor": {
+              "id": "celine",
+              "name": "Celine Dubois",
+              "initials": "CD",
+              "title": "Data operations engineer",
+              "color": "rose",
+              "bio": "Designs batch exports and job visibility for operators. Her sample changes cover checkpoints, cancellation, and failure explanations."
+            },
+            "recentAuthored": 3,
+            "recentReviewed": 2,
+            "latestContribution": "2026-06-11",
+            "classification": "recent-authorship",
+            "pullRequestIds": [
+              "PR-153",
+              "PR-157",
+              "PR-158",
+              "PR-159",
+              "PR-171",
+              "PR-160"
+            ],
+            "limitation": "Contribution evidence is not proof of ownership, availability, or overall ability."
+          },
+          {
+            "contributor": {
+              "id": "rafael",
+              "name": "Rafael Costa",
+              "initials": "RC",
+              "title": "Workflow engineer",
+              "color": "blue",
+              "bio": "Works on long-running workflow state and retries. His reviewed PRs connect background jobs to billing without implying that he owns payments."
+            },
+            "recentAuthored": 3,
+            "recentReviewed": 2,
+            "latestContribution": "2026-06-11",
+            "classification": "recent-authorship",
+            "pullRequestIds": [
+              "PR-153",
+              "PR-157",
+              "PR-154",
+              "PR-151",
+              "PR-155",
+              "PR-156"
+            ],
+            "limitation": "Contribution evidence is not proof of ownership, availability, or overall ability."
+          },
+          {
+            "contributor": {
+              "id": "hana",
+              "name": "Hana Kim",
+              "initials": "HK",
+              "title": "Queue engineer",
+              "color": "teal",
+              "bio": "Builds queue scheduling and worker coordination. Her changes show how leases, priorities, and shutdown handling affect delivery guarantees."
+            },
+            "recentAuthored": 3,
+            "recentReviewed": 0,
+            "latestContribution": "2026-06-22",
+            "classification": "recent-authorship",
+            "pullRequestIds": [
+              "PR-149",
+              "PR-150",
+              "PR-151",
+              "PR-152"
+            ],
+            "limitation": "Contribution evidence is not proof of ownership, availability, or overall ability."
+          },
+          {
+            "contributor": {
+              "id": "nora",
+              "name": "Nora Alvarez",
+              "initials": "NA",
+              "title": "Reliability engineer",
+              "color": "olive",
+              "bio": "Builds diagnostic context for asynchronous work, including queue timing and trace redaction. Observability records do not establish disaster recovery expertise."
+            },
+            "recentAuthored": 1,
+            "recentReviewed": 5,
+            "latestContribution": "2026-06-19",
+            "classification": "recent-authorship",
+            "pullRequestIds": [
+              "PR-116",
+              "PR-117",
+              "PR-158",
+              "PR-150",
+              "PR-119",
+              "PR-120"
+            ],
+            "limitation": "Contribution evidence is not proof of ownership, availability, or overall ability."
+          },
+          {
+            "contributor": {
+              "id": "jonas",
+              "name": "Jonas Weber",
+              "initials": "JW",
+              "title": "Payments engineer",
+              "color": "amber",
+              "bio": "Focuses on payment events, invoice state, and subscription changes. His recent authored PRs show billing implementation and one shared billing-to-jobs boundary."
+            },
+            "recentAuthored": 1,
+            "recentReviewed": 2,
+            "latestContribution": "2026-06-21",
+            "classification": "recent-authorship",
+            "pullRequestIds": [
+              "PR-109",
+              "PR-118",
+              "PR-155"
+            ],
+            "limitation": "Contribution evidence is not proof of ownership, availability, or overall ability."
+          },
+          {
+            "contributor": {
+              "id": "owen",
+              "name": "Owen Clarke",
+              "initials": "OC",
+              "title": "Payments integration engineer",
+              "color": "olive",
+              "bio": "Maintains provider integration edges such as webhook verification and retry-safe response mapping. The sample does not imply ownership of every billing service."
+            },
+            "recentAuthored": 1,
+            "recentReviewed": 0,
+            "latestContribution": "2026-03-02",
+            "classification": "recent-authorship",
+            "pullRequestIds": [
+              "PR-147"
+            ],
+            "limitation": "Contribution evidence is not proof of ownership, availability, or overall ability."
+          },
+          {
+            "contributor": {
+              "id": "quentin",
+              "name": "Quentin Park",
+              "initials": "QP",
+              "title": "Developer experience engineer",
+              "color": "olive",
+              "bio": "Makes local debugging and trace inspection more useful. His contributions help explain system behavior while leaving production response ownership unproven."
+            },
+            "recentAuthored": 1,
+            "recentReviewed": 0,
+            "latestContribution": "2026-02-24",
+            "classification": "recent-authorship",
+            "pullRequestIds": [
+              "PR-171"
+            ],
+            "limitation": "Contribution evidence is not proof of ownership, availability, or overall ability."
+          },
+          {
+            "contributor": {
+              "id": "yusuf",
+              "name": "Yusuf Haddad",
+              "initials": "YH",
+              "title": "Telemetry engineer",
+              "color": "purple",
+              "bio": "Shapes traces and metric dimensions for diagnosis. His records are about observing live systems, not documenting restore or recovery readiness."
+            },
+            "recentAuthored": 1,
+            "recentReviewed": 0,
+            "latestContribution": "2026-02-03",
+            "classification": "recent-authorship",
+            "pullRequestIds": [
+              "PR-163"
+            ],
+            "limitation": "Contribution evidence is not proof of ownership, availability, or overall ability."
+          },
+          {
+            "contributor": {
+              "id": "leah",
+              "name": "Leah Okafor",
+              "initials": "LO",
+              "title": "Staff engineer",
+              "color": "rose",
+              "bio": "Authored several early platform foundations and test fixtures. Those records are useful history, while later implementation may better represent current context."
+            },
+            "recentAuthored": 0,
+            "recentReviewed": 0,
+            "latestContribution": "2025-10-15",
+            "classification": "older-evidence",
+            "pullRequestIds": [
+              "PR-156",
+              "PR-121",
+              "PR-152",
+              "PR-160"
+            ],
+            "limitation": "Contribution evidence is not proof of ownership, availability, or overall ability."
+          }
+        ]
+      },
+      "durationMs": 1
+    },
+    {
+      "type": "tool",
+      "name": "search_pull_requests",
+      "arguments": {
+        "query": "invoice payment subscription retry queue scheduled",
+        "subsystemId": "billing"
+      },
+      "result": {
+        "total": 0,
+        "pullRequests": []
+      },
+      "durationMs": 1
+    },
+    {
+      "type": "tool",
+      "name": "search_pull_requests",
+      "arguments": {
+        "query": "billing retry queue scheduled payment",
+        "subsystemId": "background-jobs"
+      },
+      "result": {
+        "total": 0,
+        "pullRequests": []
+      },
+      "durationMs": 0
+    },
+    {
+      "type": "tool",
+      "name": "get_pull_request",
+      "arguments": {
+        "pullRequestId": "PR-109"
+      },
+      "result": {
+        "pullRequest": {
+          "id": "PR-109",
+          "title": "Reconcile duplicate payment webhooks",
+          "authorId": "jonas",
+          "mergedAt": "2026-06-21",
+          "subsystemIds": [
+            "billing",
+            "background-jobs"
+          ],
+          "summary": "Records provider event IDs before scheduling settlement work. Duplicate delivery does not enqueue a second settlement.",
+          "reviews": [
+            {
+              "contributorId": "priya",
+              "excerpt": "The unique event insert and queue dispatch need an outbox boundary so a crash cannot lose the job."
+            }
+          ],
+          "file": "billing/webhooks.ts",
+          "diff": "+ await tx.events.insertUnique(event.id)\n+ await tx.outbox.append({ kind: \"settle\", eventId: event.id })"
+        }
+      },
+      "durationMs": 1
+    },
+    {
+      "type": "tool",
+      "name": "get_pull_request",
+      "arguments": {
+        "pullRequestId": "PR-118"
+      },
+      "result": {
+        "pullRequest": {
+          "id": "PR-118",
+          "title": "Dispatch billing outbox entries reliably",
+          "authorId": "priya",
+          "mergedAt": "2026-04-27",
+          "subsystemIds": [
+            "background-jobs",
+            "billing"
+          ],
+          "summary": "Processes committed billing outbox entries and acknowledges them after queue acceptance. Consumers still enforce idempotency.",
+          "reviews": [
+            {
+              "contributorId": "jonas",
+              "excerpt": "Acknowledgement follows queue acceptance, and duplicate delivery remains an explicit consumer responsibility."
+            }
+          ],
+          "file": "jobs/outbox.ts",
+          "diff": "+ await queue.publish(entry)\n+ await outbox.acknowledge(entry.id)"
+        }
+      },
+      "durationMs": 0
+    },
+    {
+      "type": "tool",
+      "name": "get_pull_request",
+      "arguments": {
+        "pullRequestId": "PR-155"
+      },
+      "result": {
+        "pullRequest": {
+          "id": "PR-155",
+          "title": "Deduplicate workflow wake-up events",
+          "authorId": "rafael",
+          "mergedAt": "2026-01-28",
+          "subsystemIds": [
+            "background-jobs",
+            "billing"
+          ],
+          "summary": "Records a wake-up event key before advancing a waiting workflow. Repeated billing notifications cannot advance the same step twice.",
+          "reviews": [
+            {
+              "contributorId": "jonas",
+              "excerpt": "Use the source event ID as the key; a timestamp would not identify duplicate deliveries reliably."
+            }
+          ],
+          "file": "jobs/wakeup.ts",
+          "diff": "+ if (await seen.insertUnique(event.id)) await advance(workflow)"
+        }
+      },
+      "durationMs": 0
+    },
+    {
+      "type": "tool",
+      "name": "get_pull_request",
+      "arguments": {
+        "pullRequestId": "PR-147"
+      },
+      "result": {
+        "pullRequest": {
+          "id": "PR-147",
+          "title": "Separate webhook receipt from settlement work",
+          "authorId": "owen",
+          "mergedAt": "2026-03-02",
+          "subsystemIds": [
+            "billing",
+            "background-jobs"
+          ],
+          "summary": "Acknowledges verified event receipt after a durable outbox write, while settlement occurs in a worker. Duplicate provider delivery retains the same event identity.",
+          "reviews": [
+            {
+              "contributorId": "priya",
+              "excerpt": "The provider acknowledgement should follow the commit, and the consumer still needs its own idempotency check."
+            }
+          ],
+          "file": "billing/receipt.ts",
+          "diff": "+ await outbox.commit(event)\n+ return acceptedReceipt(event.id)"
+        }
+      },
+      "durationMs": 0
+    },
+    {
+      "type": "assistant",
+      "text": "For a change spanning both subsystems, **Jonas Weber and Priya Shah** are the strongest evidence-based candidates to involve. The records support complementary perspectives, not a claim that either owns or is available for the change.\n\n- **Billing:** Jonas has recent billing authorship, including **PR-109** (June 21, 2026), which records provider events before scheduling settlement. Owen also authored **PR-147** (March 2), separating webhook receipt from settlement work. Jonas reviewed Priya’s billing-outbox change in **PR-118**.\n- **Background jobs:** Priya has recent authorship and review evidence; **PR-118** (April 27) processes committed billing outbox entries and acknowledges them after queue acceptance. Rafael authored **PR-155** (January 28) on deduplicating workflow wake-ups, with Jonas reviewing the event-key choice. January 28 falls within the dataset’s recent window.\n\nThe cross-subsystem records are especially relevant: Jonas authored **PR-109**, Priya reviewed it and called out the outbox boundary; Priya authored **PR-118**, and Jonas reviewed the delivery and idempotency behavior. Owen’s **PR-147** adds evidence for the receipt/worker boundary, with Priya reviewing it.\n\n**Practical choice:** ask Jonas for billing semantics and Priya for queue/outbox delivery guarantees; consider Owen or Rafael if the change centers on webhook receipt or workflow wake-ups. This is a recommendation from recorded contributions and reviews, not proof of expertise or availability.",
+      "evidenceIds": [
+        "PR-109",
+        "PR-147",
+        "PR-118",
+        "PR-155"
+      ]
+    }
+  ]
+}

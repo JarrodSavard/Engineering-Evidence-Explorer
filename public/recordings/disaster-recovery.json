@@ -1,0 +1,53 @@
+{
+  "version": 1,
+  "scenarioId": "disaster-recovery",
+  "datasetHash": "091ab7b2863810aeb9185d8847f5e1fa53cf1eb04e5b3b67e4ad643b7e165b49",
+  "recordedAt": "2026-09-26T02:04:01.993Z",
+  "host": "OpenAI Responses API · local MCP client",
+  "model": "gpt-6-luna (confirmed by every API response)",
+  "reviewed": true,
+  "events": [
+    {
+      "type": "user",
+      "text": "Who should lead disaster recovery? First check which subsystems this dataset covers. If it cannot answer, state the gap without guessing or treating observability work as recovery expertise.",
+      "evidenceIds": []
+    },
+    {
+      "type": "tool",
+      "name": "list_subsystems",
+      "arguments": {},
+      "result": {
+        "subsystems": [
+          {
+            "id": "authentication",
+            "name": "Authentication",
+            "description": "Sessions, token rotation, SSO, and account access."
+          },
+          {
+            "id": "billing",
+            "name": "Billing",
+            "description": "Invoices, payment events, and subscription state."
+          },
+          {
+            "id": "background-jobs",
+            "name": "Background jobs",
+            "description": "Queue execution, retry policies, and scheduled work."
+          },
+          {
+            "id": "observability",
+            "name": "Observability",
+            "description": "Operational traces, metrics, and diagnostic context."
+          }
+        ],
+        "asOf": "2026-06-30",
+        "fictional": true
+      },
+      "durationMs": 2
+    },
+    {
+      "type": "assistant",
+      "text": "The dataset covers authentication, billing, background jobs, and observability. It has no disaster-recovery subsystem or evidence of disaster-recovery expertise, so it cannot identify who should lead disaster recovery. Observability work is not evidence of recovery expertise.",
+      "evidenceIds": []
+    }
+  ]
+}

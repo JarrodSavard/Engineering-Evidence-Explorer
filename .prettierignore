@@ -1,0 +1,12 @@
+node_modules
+.nuxt
+.output
+dist
+tmp
+output
+.recordings
+public/recordings
+worker/env.d.ts
+package-lock.json
+test-results
+playwright-report

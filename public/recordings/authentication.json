@@ -1,0 +1,953 @@
+{
+  "version": 1,
+  "scenarioId": "authentication",
+  "datasetHash": "091ab7b2863810aeb9185d8847f5e1fa53cf1eb04e5b3b67e4ad643b7e165b49",
+  "recordedAt": "2026-09-26T02:03:24.840Z",
+  "host": "OpenAI Responses API · local MCP client",
+  "model": "gpt-6-luna (confirmed by every API response)",
+  "reviewed": true,
+  "events": [
+    {
+      "type": "user",
+      "text": "Who has recent authentication implementation experience? Inspect their contributions and supporting PRs before recommending a reviewer.",
+      "evidenceIds": []
+    },
+    {
+      "type": "tool",
+      "name": "list_subsystems",
+      "arguments": {},
+      "result": {
+        "subsystems": [
+          {
+            "id": "authentication",
+            "name": "Authentication",
+            "description": "Sessions, token rotation, SSO, and account access."
+          },
+          {
+            "id": "billing",
+            "name": "Billing",
+            "description": "Invoices, payment events, and subscription state."
+          },
+          {
+            "id": "background-jobs",
+            "name": "Background jobs",
+            "description": "Queue execution, retry policies, and scheduled work."
+          },
+          {
+            "id": "observability",
+            "name": "Observability",
+            "description": "Operational traces, metrics, and diagnostic context."
+          }
+        ],
+        "asOf": "2026-06-30",
+        "fictional": true
+      },
+      "durationMs": 2
+    },
+    {
+      "type": "tool",
+      "name": "find_contributors",
+      "arguments": {
+        "subsystemId": "authentication"
+      },
+      "result": {
+        "findings": [
+          {
+            "contributor": {
+              "id": "maya",
+              "name": "Maya Chen",
+              "initials": "MC",
+              "title": "Platform engineer",
+              "color": "teal",
+              "bio": "Works on session lifecycle and account boundaries. Her recent authored changes cover token rotation, callback state, credential changes, and sign-out behavior."
+            },
+            "recentAuthored": 4,
+            "recentReviewed": 3,
+            "latestContribution": "2026-06-24",
+            "classification": "recent-authorship",
+            "pullRequestIds": [
+              "PR-101",
+              "PR-125",
+              "PR-129",
+              "PR-102",
+              "PR-103",
+              "PR-135",
+              "PR-104",
+              "PR-108",
+              "PR-106"
+            ],
+            "limitation": "Contribution evidence is not proof of ownership, availability, or overall ability."
+          },
+          {
+            "contributor": {
+              "id": "theo",
+              "name": "Theo Marin",
+              "initials": "TM",
+              "title": "Identity engineer",
+              "color": "blue",
+              "bio": "Designs identity-provider boundaries and consent flows. His PRs show implementation and review of authentication interfaces, with one older migration record."
+            },
+            "recentAuthored": 3,
+            "recentReviewed": 2,
+            "latestContribution": "2026-06-12",
+            "classification": "recent-authorship",
+            "pullRequestIds": [
+              "PR-125",
+              "PR-130",
+              "PR-126",
+              "PR-134",
+              "PR-127",
+              "PR-128"
+            ],
+            "limitation": "Contribution evidence is not proof of ownership, availability, or overall ability."
+          },
+          {
+            "contributor": {
+              "id": "sofia",
+              "name": "Sofia Petrov",
+              "initials": "SP",
+              "title": "Client platform engineer",
+              "color": "purple",
+              "bio": "Connects browser session behavior to server contracts. Her examples cover device sessions, reauthentication prompts, and client-safe error handling."
+            },
+            "recentAuthored": 3,
+            "recentReviewed": 1,
+            "latestContribution": "2026-06-17",
+            "classification": "recent-authorship",
+            "pullRequestIds": [
+              "PR-133",
+              "PR-134",
+              "PR-135",
+              "PR-127",
+              "PR-136"
+            ],
+            "limitation": "Contribution evidence is not proof of ownership, availability, or overall ability."
+          },
+          {
+            "contributor": {
+              "id": "imani",
+              "name": "Imani Reed",
+              "initials": "IR",
+              "title": "Security engineer",
+              "color": "rose",
+              "bio": "Works on account recovery safeguards and authentication auditability. Her contributions focus on abuse resistance rather than general incident recovery."
+            },
+            "recentAuthored": 3,
+            "recentReviewed": 1,
+            "latestContribution": "2026-06-03",
+            "classification": "recent-authorship",
+            "pullRequestIds": [
+              "PR-129",
+              "PR-130",
+              "PR-126",
+              "PR-131",
+              "PR-132"
+            ],
+            "limitation": "Contribution evidence is not proof of ownership, availability, or overall ability."
+          },
+          {
+            "contributor": {
+              "id": "eli",
+              "name": "Eli Brooks",
+              "initials": "EB",
+              "title": "Product engineer",
+              "color": "blue",
+              "bio": "Reviews authentication behavior from the product edge and has written billing presentation code. His review history is evidence of context, not ownership."
+            },
+            "recentAuthored": 0,
+            "recentReviewed": 5,
+            "latestContribution": "2026-06-24",
+            "classification": "review-only",
+            "pullRequestIds": [
+              "PR-101",
+              "PR-133",
+              "PR-102",
+              "PR-103",
+              "PR-104",
+              "PR-136",
+              "PR-107"
+            ],
+            "limitation": "Contribution evidence is not proof of ownership, availability, or overall ability."
+          },
+          {
+            "contributor": {
+              "id": "nora",
+              "name": "Nora Alvarez",
+              "initials": "NA",
+              "title": "Reliability engineer",
+              "color": "olive",
+              "bio": "Builds diagnostic context for asynchronous work, including queue timing and trace redaction. Observability records do not establish disaster recovery expertise."
+            },
+            "recentAuthored": 0,
+            "recentReviewed": 1,
+            "latestContribution": "2026-01-23",
+            "classification": "review-only",
+            "pullRequestIds": [
+              "PR-131"
+            ],
+            "limitation": "Contribution evidence is not proof of ownership, availability, or overall ability."
+          },
+          {
+            "contributor": {
+              "id": "leah",
+              "name": "Leah Okafor",
+              "initials": "LO",
+              "title": "Staff engineer",
+              "color": "rose",
+              "bio": "Authored several early platform foundations and test fixtures. Those records are useful history, while later implementation may better represent current context."
+            },
+            "recentAuthored": 0,
+            "recentReviewed": 0,
+            "latestContribution": "2025-11-03",
+            "classification": "older-evidence",
+            "pullRequestIds": [
+              "PR-108",
+              "PR-107",
+              "PR-128",
+              "PR-132",
+              "PR-106"
+            ],
+            "limitation": "Contribution evidence is not proof of ownership, availability, or overall ability."
+          }
+        ]
+      },
+      "durationMs": 7
+    },
+    {
+      "type": "tool",
+      "name": "get_contributor_evidence",
+      "arguments": {
+        "contributorId": "maya",
+        "subsystemId": "authentication"
+      },
+      "result": {
+        "evidence": [
+          {
+            "id": "PR-101",
+            "title": "Make refresh-token rotation atomic",
+            "authorId": "maya",
+            "mergedAt": "2026-06-24",
+            "subsystemIds": [
+              "authentication"
+            ],
+            "summary": "Replaces the read-then-write refresh flow with a transaction. A replayed token is rejected after its first successful exchange.",
+            "reviews": [
+              {
+                "contributorId": "eli",
+                "excerpt": "The concurrent refresh test now proves that only one request receives a replacement token."
+              }
+            ],
+            "file": "auth/refresh.ts",
+            "diff": "- const session = await lookup(token)\n- await replace(session)\n+ await transaction(async tx => {\n+   const session = await tx.consume(token)\n+   return tx.issueReplacement(session)\n+ })",
+            "role": "author",
+            "recent": true
+          },
+          {
+            "id": "PR-125",
+            "title": "Bind SSO state to the initiating browser session",
+            "authorId": "theo",
+            "mergedAt": "2026-06-12",
+            "subsystemIds": [
+              "authentication"
+            ],
+            "summary": "Associates the SSO state value with a short-lived browser session and rejects callbacks initiated elsewhere. The example covers a copied callback URL and a legitimate second tab.",
+            "reviews": [
+              {
+                "contributorId": "maya",
+                "excerpt": "The state check belongs before account linking so a foreign tab cannot attach the response to the wrong session."
+              }
+            ],
+            "file": "auth/sso-state.ts",
+            "diff": "+ if (callback.sessionId !== pending.sessionId) throw new InvalidSsoState()",
+            "role": "reviewer",
+            "recent": true
+          },
+          {
+            "id": "PR-129",
+            "title": "Require a fresh factor for account recovery changes",
+            "authorId": "imani",
+            "mergedAt": "2026-06-03",
+            "subsystemIds": [
+              "authentication"
+            ],
+            "summary": "Requires recent second-factor verification before changing recovery destinations. The flow expires the proof after one sensitive change and logs only safe metadata.",
+            "reviews": [
+              {
+                "contributorId": "maya",
+                "excerpt": "The one-use proof closes the gap where a stale verification could authorize two destination changes."
+              }
+            ],
+            "file": "auth/recovery-factor.ts",
+            "diff": "+ await factors.consumeRecentProof(accountId, proofId)",
+            "role": "reviewer",
+            "recent": true
+          },
+          {
+            "id": "PR-102",
+            "title": "Bound the SSO callback state lifetime",
+            "authorId": "maya",
+            "mergedAt": "2026-05-18",
+            "subsystemIds": [
+              "authentication"
+            ],
+            "summary": "Rejects expired callback state and consumes valid state once. Covers stale tabs and repeated redirects.",
+            "reviews": [
+              {
+                "contributorId": "eli",
+                "excerpt": "Added coverage for an expired state followed by a valid new sign-in."
+              }
+            ],
+            "file": "auth/callback.ts",
+            "diff": "- const state = await readState(key)\n+ const state = await consumeValidState(key, now)\n+ if (!state) return restartSignIn()",
+            "role": "author",
+            "recent": true
+          },
+          {
+            "id": "PR-103",
+            "title": "Invalidate sessions after credential changes",
+            "authorId": "maya",
+            "mergedAt": "2026-03-09",
+            "subsystemIds": [
+              "authentication"
+            ],
+            "summary": "Introduces a credential version check so previously issued sessions stop working after a password change.",
+            "reviews": [
+              {
+                "contributorId": "eli",
+                "excerpt": "Version comparisons are scoped to the account; other accounts retain their sessions."
+              }
+            ],
+            "file": "auth/session.ts",
+            "diff": "+ if (session.credentialVersion !== account.credentialVersion) {\n+   throw new SessionExpiredError()\n+ }",
+            "role": "author",
+            "recent": true
+          },
+          {
+            "id": "PR-135",
+            "title": "Distinguish revoked and expired sessions in UI copy",
+            "authorId": "sofia",
+            "mergedAt": "2026-02-19",
+            "subsystemIds": [
+              "authentication"
+            ],
+            "summary": "Maps safe server session codes to distinct user-facing messages. The browser never tries to infer token contents or expose internal authentication details.",
+            "reviews": [
+              {
+                "contributorId": "maya",
+                "excerpt": "The generic fallback is important when an unknown server code arrives from an older deployment."
+              }
+            ],
+            "file": "account/session-errors.ts",
+            "diff": "+ return safeCopyByCode[error.code] ?? genericSignInCopy",
+            "role": "reviewer",
+            "recent": true
+          },
+          {
+            "id": "PR-104",
+            "title": "Make sign-out safe to repeat",
+            "authorId": "maya",
+            "mergedAt": "2026-01-12",
+            "subsystemIds": [
+              "authentication"
+            ],
+            "summary": "Treats already revoked sessions as successful sign-outs and clears the cookie consistently.",
+            "reviews": [
+              {
+                "contributorId": "eli",
+                "excerpt": "Both a missing session and an already revoked session now return the same safe result."
+              }
+            ],
+            "file": "auth/signout.ts",
+            "diff": "- await revokeOrThrow(sessionId)\n+ await revokeIfPresent(sessionId)\n+ clearSessionCookie()",
+            "role": "author",
+            "recent": true
+          },
+          {
+            "id": "PR-108",
+            "title": "Review authentication audit event names",
+            "authorId": "leah",
+            "mergedAt": "2025-11-03",
+            "subsystemIds": [
+              "authentication"
+            ],
+            "summary": "Standardizes sign-in and sign-out event names. It does not add incident or recovery procedures.",
+            "reviews": [
+              {
+                "contributorId": "maya",
+                "excerpt": "The event names describe the operation without including credentials."
+              }
+            ],
+            "file": "auth/events.ts",
+            "diff": "- emit(\"login\", payload)\n+ emit(\"session.created\", safeMetadata)",
+            "role": "reviewer",
+            "recent": false
+          },
+          {
+            "id": "PR-106",
+            "title": "Introduce the original session middleware",
+            "authorId": "leah",
+            "mergedAt": "2025-08-12",
+            "subsystemIds": [
+              "authentication"
+            ],
+            "summary": "Adds the first shared session middleware. This historical implementation predates the later version and revocation checks.",
+            "reviews": [
+              {
+                "contributorId": "maya",
+                "excerpt": "The middleware keeps route handlers free of duplicate cookie parsing."
+              }
+            ],
+            "file": "auth/middleware.ts",
+            "diff": "+ const session = await sessions.find(cookie)\n+ context.account = session.accountId",
+            "role": "reviewer",
+            "recent": false
+          }
+        ]
+      },
+      "durationMs": 1
+    },
+    {
+      "type": "tool",
+      "name": "get_contributor_evidence",
+      "arguments": {
+        "contributorId": "theo",
+        "subsystemId": "authentication"
+      },
+      "result": {
+        "evidence": [
+          {
+            "id": "PR-125",
+            "title": "Bind SSO state to the initiating browser session",
+            "authorId": "theo",
+            "mergedAt": "2026-06-12",
+            "subsystemIds": [
+              "authentication"
+            ],
+            "summary": "Associates the SSO state value with a short-lived browser session and rejects callbacks initiated elsewhere. The example covers a copied callback URL and a legitimate second tab.",
+            "reviews": [
+              {
+                "contributorId": "maya",
+                "excerpt": "The state check belongs before account linking so a foreign tab cannot attach the response to the wrong session."
+              }
+            ],
+            "file": "auth/sso-state.ts",
+            "diff": "+ if (callback.sessionId !== pending.sessionId) throw new InvalidSsoState()",
+            "role": "author",
+            "recent": true
+          },
+          {
+            "id": "PR-130",
+            "title": "Rate-limit repeated recovery code attempts",
+            "authorId": "imani",
+            "mergedAt": "2026-04-29",
+            "subsystemIds": [
+              "authentication"
+            ],
+            "summary": "Tracks failed recovery-code attempts per account and challenge window. Lockout responses avoid confirming whether a guessed account or code exists.",
+            "reviews": [
+              {
+                "contributorId": "theo",
+                "excerpt": "The window should reset after a successful challenge, while the audit event keeps the attempt count without the submitted code."
+              }
+            ],
+            "file": "auth/recovery-code.ts",
+            "diff": "+ if (attempts.inWindow >= limit) return genericChallengeFailure()",
+            "role": "reviewer",
+            "recent": true
+          },
+          {
+            "id": "PR-126",
+            "title": "Explain identity-provider consent changes",
+            "authorId": "theo",
+            "mergedAt": "2026-04-20",
+            "subsystemIds": [
+              "authentication"
+            ],
+            "summary": "Stores the requested and returned scopes separately so a sign-in can surface missing consent. This avoids silently treating a partial grant as a complete authorization.",
+            "reviews": [
+              {
+                "contributorId": "imani",
+                "excerpt": "Please keep the raw provider token out of the diagnostic event; the scope names are enough to explain the mismatch."
+              }
+            ],
+            "file": "auth/consent.ts",
+            "diff": "+ const missing = requestedScopes.filter(scope => !grantedScopes.has(scope))",
+            "role": "author",
+            "recent": true
+          },
+          {
+            "id": "PR-134",
+            "title": "Recover cleanly from expired reauthentication",
+            "authorId": "sofia",
+            "mergedAt": "2026-03-25",
+            "subsystemIds": [
+              "authentication"
+            ],
+            "summary": "Preserves the intended account action while asking for a new authentication step. It drops the pending action if the account changes during the redirect.",
+            "reviews": [
+              {
+                "contributorId": "theo",
+                "excerpt": "Clearing the action on account mismatch avoids replaying a sensitive change under another identity."
+              }
+            ],
+            "file": "account/reauth.ts",
+            "diff": "+ if (returned.accountId !== pending.accountId) return discardAction()",
+            "role": "reviewer",
+            "recent": true
+          },
+          {
+            "id": "PR-127",
+            "title": "Reject duplicate external identity links",
+            "authorId": "theo",
+            "mergedAt": "2026-02-05",
+            "subsystemIds": [
+              "authentication"
+            ],
+            "summary": "Adds a uniqueness boundary for external subject identifiers during account linking. A conflicting link returns an explicit error without changing either existing account.",
+            "reviews": [
+              {
+                "contributorId": "sofia",
+                "excerpt": "The conflict response needs a stable client code but should not reveal which account already owns the external identity."
+              }
+            ],
+            "file": "auth/link.ts",
+            "diff": "+ await identities.insertUnique({ provider, subject, accountId })",
+            "role": "author",
+            "recent": true
+          },
+          {
+            "id": "PR-128",
+            "title": "Add the initial provider profile mapper",
+            "authorId": "theo",
+            "mergedAt": "2025-09-14",
+            "subsystemIds": [
+              "authentication"
+            ],
+            "summary": "Introduces an early provider-profile mapper with a small set of normalized fields. Later account-linking checks should be read separately from this historical foundation.",
+            "reviews": [
+              {
+                "contributorId": "leah",
+                "excerpt": "Keep optional provider fields optional in the normalized profile; a missing avatar must not block sign-in."
+              }
+            ],
+            "file": "auth/profile.ts",
+            "diff": "+ return { subject: raw.sub, displayName: raw.name ?? null }",
+            "role": "author",
+            "recent": false
+          }
+        ]
+      },
+      "durationMs": 0
+    },
+    {
+      "type": "tool",
+      "name": "get_contributor_evidence",
+      "arguments": {
+        "contributorId": "sofia",
+        "subsystemId": "authentication"
+      },
+      "result": {
+        "evidence": [
+          {
+            "id": "PR-133",
+            "title": "Keep device sessions distinct in account settings",
+            "authorId": "sofia",
+            "mergedAt": "2026-06-17",
+            "subsystemIds": [
+              "authentication"
+            ],
+            "summary": "Displays active device sessions using safe labels and last-seen dates. Revoking one device does not close the current session unless it is the selected target.",
+            "reviews": [
+              {
+                "contributorId": "eli",
+                "excerpt": "The current-device marker needs to derive from the active session ID, not from matching a browser label."
+              }
+            ],
+            "file": "account/devices.vue",
+            "diff": "+ const current = device.sessionId === activeSessionId",
+            "role": "author",
+            "recent": true
+          },
+          {
+            "id": "PR-134",
+            "title": "Recover cleanly from expired reauthentication",
+            "authorId": "sofia",
+            "mergedAt": "2026-03-25",
+            "subsystemIds": [
+              "authentication"
+            ],
+            "summary": "Preserves the intended account action while asking for a new authentication step. It drops the pending action if the account changes during the redirect.",
+            "reviews": [
+              {
+                "contributorId": "theo",
+                "excerpt": "Clearing the action on account mismatch avoids replaying a sensitive change under another identity."
+              }
+            ],
+            "file": "account/reauth.ts",
+            "diff": "+ if (returned.accountId !== pending.accountId) return discardAction()",
+            "role": "author",
+            "recent": true
+          },
+          {
+            "id": "PR-135",
+            "title": "Distinguish revoked and expired sessions in UI copy",
+            "authorId": "sofia",
+            "mergedAt": "2026-02-19",
+            "subsystemIds": [
+              "authentication"
+            ],
+            "summary": "Maps safe server session codes to distinct user-facing messages. The browser never tries to infer token contents or expose internal authentication details.",
+            "reviews": [
+              {
+                "contributorId": "maya",
+                "excerpt": "The generic fallback is important when an unknown server code arrives from an older deployment."
+              }
+            ],
+            "file": "account/session-errors.ts",
+            "diff": "+ return safeCopyByCode[error.code] ?? genericSignInCopy",
+            "role": "author",
+            "recent": true
+          },
+          {
+            "id": "PR-127",
+            "title": "Reject duplicate external identity links",
+            "authorId": "theo",
+            "mergedAt": "2026-02-05",
+            "subsystemIds": [
+              "authentication"
+            ],
+            "summary": "Adds a uniqueness boundary for external subject identifiers during account linking. A conflicting link returns an explicit error without changing either existing account.",
+            "reviews": [
+              {
+                "contributorId": "sofia",
+                "excerpt": "The conflict response needs a stable client code but should not reveal which account already owns the external identity."
+              }
+            ],
+            "file": "auth/link.ts",
+            "diff": "+ await identities.insertUnique({ provider, subject, accountId })",
+            "role": "reviewer",
+            "recent": true
+          },
+          {
+            "id": "PR-136",
+            "title": "Introduce an early account session banner",
+            "authorId": "sofia",
+            "mergedAt": "2025-10-06",
+            "subsystemIds": [
+              "authentication"
+            ],
+            "summary": "Adds a historical account banner for sign-in state and recent activity. Later device-level revocation behavior is not part of this early UI change.",
+            "reviews": [
+              {
+                "contributorId": "eli",
+                "excerpt": "Use the server-provided last-seen date rather than relying on the browser clock for the displayed activity."
+              }
+            ],
+            "file": "account/session-banner.vue",
+            "diff": "+ <AccountActivity :last-seen=\"session.lastSeenAt\" />",
+            "role": "author",
+            "recent": false
+          }
+        ]
+      },
+      "durationMs": 0
+    },
+    {
+      "type": "tool",
+      "name": "get_contributor_evidence",
+      "arguments": {
+        "contributorId": "imani",
+        "subsystemId": "authentication"
+      },
+      "result": {
+        "evidence": [
+          {
+            "id": "PR-129",
+            "title": "Require a fresh factor for account recovery changes",
+            "authorId": "imani",
+            "mergedAt": "2026-06-03",
+            "subsystemIds": [
+              "authentication"
+            ],
+            "summary": "Requires recent second-factor verification before changing recovery destinations. The flow expires the proof after one sensitive change and logs only safe metadata.",
+            "reviews": [
+              {
+                "contributorId": "maya",
+                "excerpt": "The one-use proof closes the gap where a stale verification could authorize two destination changes."
+              }
+            ],
+            "file": "auth/recovery-factor.ts",
+            "diff": "+ await factors.consumeRecentProof(accountId, proofId)",
+            "role": "author",
+            "recent": true
+          },
+          {
+            "id": "PR-130",
+            "title": "Rate-limit repeated recovery code attempts",
+            "authorId": "imani",
+            "mergedAt": "2026-04-29",
+            "subsystemIds": [
+              "authentication"
+            ],
+            "summary": "Tracks failed recovery-code attempts per account and challenge window. Lockout responses avoid confirming whether a guessed account or code exists.",
+            "reviews": [
+              {
+                "contributorId": "theo",
+                "excerpt": "The window should reset after a successful challenge, while the audit event keeps the attempt count without the submitted code."
+              }
+            ],
+            "file": "auth/recovery-code.ts",
+            "diff": "+ if (attempts.inWindow >= limit) return genericChallengeFailure()",
+            "role": "author",
+            "recent": true
+          },
+          {
+            "id": "PR-126",
+            "title": "Explain identity-provider consent changes",
+            "authorId": "theo",
+            "mergedAt": "2026-04-20",
+            "subsystemIds": [
+              "authentication"
+            ],
+            "summary": "Stores the requested and returned scopes separately so a sign-in can surface missing consent. This avoids silently treating a partial grant as a complete authorization.",
+            "reviews": [
+              {
+                "contributorId": "imani",
+                "excerpt": "Please keep the raw provider token out of the diagnostic event; the scope names are enough to explain the mismatch."
+              }
+            ],
+            "file": "auth/consent.ts",
+            "diff": "+ const missing = requestedScopes.filter(scope => !grantedScopes.has(scope))",
+            "role": "reviewer",
+            "recent": true
+          },
+          {
+            "id": "PR-131",
+            "title": "Record safe authentication decision reasons",
+            "authorId": "imani",
+            "mergedAt": "2026-01-23",
+            "subsystemIds": [
+              "authentication",
+              "observability"
+            ],
+            "summary": "Adds coarse decision reasons for rejected sign-ins without emitting secrets or user-entered credentials. Operators can separate expired challenges from policy denials.",
+            "reviews": [
+              {
+                "contributorId": "nora",
+                "excerpt": "Use an allow-list for reason labels so provider error text never becomes a metric dimension."
+              }
+            ],
+            "file": "auth/decision-event.ts",
+            "diff": "+ emitAuthDecision({ reason: safeReason(error), accountRef })",
+            "role": "author",
+            "recent": true
+          },
+          {
+            "id": "PR-132",
+            "title": "Document the original challenge threat cases",
+            "authorId": "imani",
+            "mergedAt": "2025-08-27",
+            "subsystemIds": [
+              "authentication"
+            ],
+            "summary": "Adds historical examples for replayed challenges, clock skew, and abandoned sign-ins. These examples predate the newer one-use recovery proof.",
+            "reviews": [
+              {
+                "contributorId": "leah",
+                "excerpt": "The examples make the intended boundary clear; note that they do not exercise provider outage behavior."
+              }
+            ],
+            "file": "auth/challenge-cases.md",
+            "diff": "+ replayed challenge -> reject without account mutation",
+            "role": "author",
+            "recent": false
+          }
+        ]
+      },
+      "durationMs": 0
+    },
+    {
+      "type": "tool",
+      "name": "get_pull_request",
+      "arguments": {
+        "pullRequestId": "PR-129"
+      },
+      "result": {
+        "pullRequest": {
+          "id": "PR-129",
+          "title": "Require a fresh factor for account recovery changes",
+          "authorId": "imani",
+          "mergedAt": "2026-06-03",
+          "subsystemIds": [
+            "authentication"
+          ],
+          "summary": "Requires recent second-factor verification before changing recovery destinations. The flow expires the proof after one sensitive change and logs only safe metadata.",
+          "reviews": [
+            {
+              "contributorId": "maya",
+              "excerpt": "The one-use proof closes the gap where a stale verification could authorize two destination changes."
+            }
+          ],
+          "file": "auth/recovery-factor.ts",
+          "diff": "+ await factors.consumeRecentProof(accountId, proofId)"
+        }
+      },
+      "durationMs": 0
+    },
+    {
+      "type": "tool",
+      "name": "get_pull_request",
+      "arguments": {
+        "pullRequestId": "PR-125"
+      },
+      "result": {
+        "pullRequest": {
+          "id": "PR-125",
+          "title": "Bind SSO state to the initiating browser session",
+          "authorId": "theo",
+          "mergedAt": "2026-06-12",
+          "subsystemIds": [
+            "authentication"
+          ],
+          "summary": "Associates the SSO state value with a short-lived browser session and rejects callbacks initiated elsewhere. The example covers a copied callback URL and a legitimate second tab.",
+          "reviews": [
+            {
+              "contributorId": "maya",
+              "excerpt": "The state check belongs before account linking so a foreign tab cannot attach the response to the wrong session."
+            }
+          ],
+          "file": "auth/sso-state.ts",
+          "diff": "+ if (callback.sessionId !== pending.sessionId) throw new InvalidSsoState()"
+        }
+      },
+      "durationMs": 0
+    },
+    {
+      "type": "tool",
+      "name": "get_pull_request",
+      "arguments": {
+        "pullRequestId": "PR-130"
+      },
+      "result": {
+        "pullRequest": {
+          "id": "PR-130",
+          "title": "Rate-limit repeated recovery code attempts",
+          "authorId": "imani",
+          "mergedAt": "2026-04-29",
+          "subsystemIds": [
+            "authentication"
+          ],
+          "summary": "Tracks failed recovery-code attempts per account and challenge window. Lockout responses avoid confirming whether a guessed account or code exists.",
+          "reviews": [
+            {
+              "contributorId": "theo",
+              "excerpt": "The window should reset after a successful challenge, while the audit event keeps the attempt count without the submitted code."
+            }
+          ],
+          "file": "auth/recovery-code.ts",
+          "diff": "+ if (attempts.inWindow >= limit) return genericChallengeFailure()"
+        }
+      },
+      "durationMs": 0
+    },
+    {
+      "type": "tool",
+      "name": "get_pull_request",
+      "arguments": {
+        "pullRequestId": "PR-133"
+      },
+      "result": {
+        "pullRequest": {
+          "id": "PR-133",
+          "title": "Keep device sessions distinct in account settings",
+          "authorId": "sofia",
+          "mergedAt": "2026-06-17",
+          "subsystemIds": [
+            "authentication"
+          ],
+          "summary": "Displays active device sessions using safe labels and last-seen dates. Revoking one device does not close the current session unless it is the selected target.",
+          "reviews": [
+            {
+              "contributorId": "eli",
+              "excerpt": "The current-device marker needs to derive from the active session ID, not from matching a browser label."
+            }
+          ],
+          "file": "account/devices.vue",
+          "diff": "+ const current = device.sessionId === activeSessionId"
+        }
+      },
+      "durationMs": 0
+    },
+    {
+      "type": "tool",
+      "name": "get_pull_request",
+      "arguments": {
+        "pullRequestId": "PR-126"
+      },
+      "result": {
+        "pullRequest": {
+          "id": "PR-126",
+          "title": "Explain identity-provider consent changes",
+          "authorId": "theo",
+          "mergedAt": "2026-04-20",
+          "subsystemIds": [
+            "authentication"
+          ],
+          "summary": "Stores the requested and returned scopes separately so a sign-in can surface missing consent. This avoids silently treating a partial grant as a complete authorization.",
+          "reviews": [
+            {
+              "contributorId": "imani",
+              "excerpt": "Please keep the raw provider token out of the diagnostic event; the scope names are enough to explain the mismatch."
+            }
+          ],
+          "file": "auth/consent.ts",
+          "diff": "+ const missing = requestedScopes.filter(scope => !grantedScopes.has(scope))"
+        }
+      },
+      "durationMs": 0
+    },
+    {
+      "type": "tool",
+      "name": "get_pull_request",
+      "arguments": {
+        "pullRequestId": "PR-101"
+      },
+      "result": {
+        "pullRequest": {
+          "id": "PR-101",
+          "title": "Make refresh-token rotation atomic",
+          "authorId": "maya",
+          "mergedAt": "2026-06-24",
+          "subsystemIds": [
+            "authentication"
+          ],
+          "summary": "Replaces the read-then-write refresh flow with a transaction. A replayed token is rejected after its first successful exchange.",
+          "reviews": [
+            {
+              "contributorId": "eli",
+              "excerpt": "The concurrent refresh test now proves that only one request receives a replacement token."
+            }
+          ],
+          "file": "auth/refresh.ts",
+          "diff": "- const session = await lookup(token)\n- await replace(session)\n+ await transaction(async tx => {\n+   const session = await tx.consume(token)\n+   return tx.issueReplacement(session)\n+ })"
+        }
+      },
+      "durationMs": 0
+    },
+    {
+      "type": "assistant",
+      "text": "The strongest recent authentication implementation candidates are **Maya Chen** and **Theo Marin**:\n\n- **Maya** authored four recent authentication PRs, including atomic refresh-token rotation (**PR-101**, June 24) and callback-state lifetime handling (**PR-102**). She also reviewed Theo’s session-bound SSO change (**PR-125**) and Imani’s recovery safeguard (**PR-129**).\n- **Theo** authored recent SSO session binding (**PR-125**, June 12), consent-scope handling (**PR-126**), and duplicate identity-link protection (**PR-127**). He also reviewed recovery-code rate limiting (**PR-130**).\n- **Imani Reed** has focused recent implementation evidence in recovery safeguards: fresh-factor checks (**PR-129**) and recovery-code rate limiting (**PR-130**).\n- **Sofia Petrov** has recent implementation in device-session UI (**PR-133**) and reauthentication flow behavior (**PR-134**).\n\n**Reviewer recommendation:** Maya is the best-supported general authentication reviewer in this evidence, with recent implementation across token/session flows and reviews on SSO and recovery work. Theo is a strong alternative for identity-provider, SSO, or account-linking changes. This recommendation reflects recorded contributions only—not availability, ownership, or overall ability.",
+      "evidenceIds": [
+        "PR-101",
+        "PR-102",
+        "PR-125",
+        "PR-129",
+        "PR-126",
+        "PR-127",
+        "PR-130",
+        "PR-133",
+        "PR-134"
+      ]
+    }
+  ]
+}

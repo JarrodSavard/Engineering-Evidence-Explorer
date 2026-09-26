@@ -1,0 +1,54 @@
+{
+  "name": "engineering-evidence-explorer",
+  "version": "1.0.0",
+  "private": true,
+  "license": "UNLICENSED",
+  "type": "module",
+  "engines": {
+    "node": ">=24.11 <25"
+  },
+  "scripts": {
+    "dev": "nuxt dev --host 127.0.0.1",
+    "build": "tsx scripts/prepare-public.ts && nuxt generate",
+    "preview": "tsx scripts/preview.ts",
+    "postinstall": "nuxt prepare",
+    "typecheck": "nuxt typecheck && tsc -p tsconfig.tools.json --noEmit && tsc -p tsconfig.worker.json --noEmit",
+    "test": "vitest run",
+    "test:browser": "playwright test",
+    "mcp": "tsx mcp/server.ts",
+    "record": "tsx scripts/record.ts",
+    "record:api": "tsx scripts/record-api.ts",
+    "recordings:import-api": "tsx scripts/import-api-recording.ts",
+    "live:dev": "tsx scripts/live-dev.ts",
+    "live:secrets": "tsx scripts/live-secrets.ts",
+    "live:check": "wrangler deploy --config worker/wrangler.jsonc --dry-run --outdir tmp/worker-dry-run",
+    "recordings:import": "tsx scripts/import-recording.ts",
+    "recordings:validate": "tsx scripts/validate-recordings.ts",
+    "recordings:release": "tsx scripts/validate-recordings.ts --require-complete",
+    "check": "npm run test && npm run typecheck && npm run recordings:release && npm run build",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test:base-path": "tsx scripts/test-base-path.ts"
+  },
+  "dependencies": {
+    "@fontsource/dm-sans": "^5.2.0",
+    "@fontsource/newsreader": "^5.2.0",
+    "@modelcontextprotocol/client": "2.1.0",
+    "@modelcontextprotocol/server": "2.1.0",
+    "nuxt": "4.5.2",
+    "vue": "^3.5.0",
+    "zod": "^4.0.0"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.10.0",
+    "@cloudflare/workers-types": "^5.20260925.2",
+    "@playwright/test": "^1.55.0",
+    "@types/node": "^24.0.0",
+    "prettier": "^3.9.9",
+    "tsx": "^4.20.0",
+    "typescript": "^5.9.0",
+    "vitest": "^5.0.2",
+    "vue-tsc": "^3.0.0",
+    "wrangler": "^4.141.0"
+  }
+}

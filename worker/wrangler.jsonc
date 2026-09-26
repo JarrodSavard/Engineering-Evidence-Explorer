@@ -1,0 +1,24 @@
+{
+  "$schema": "../node_modules/wrangler/config-schema.json",
+  "name": "engineering-evidence-explorer-live",
+  "main": "index.ts",
+  "compatibility_date": "2026-09-25",
+  "compatibility_flags": ["nodejs_compat"],
+  "observability": { "enabled": true, "head_sampling_rate": 0.1 },
+  "durable_objects": {
+    "bindings": [{ "name": "BUDGET", "class_name": "DailyBudget" }],
+  },
+  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["DailyBudget"] }],
+  "ratelimits": [
+    {
+      "name": "PER_VISITOR",
+      "namespace_id": "907202601",
+      "simple": { "limit": 3, "period": 60 },
+    },
+    {
+      "name": "PER_LOCATION",
+      "namespace_id": "907202602",
+      "simple": { "limit": 12, "period": 60 },
+    },
+  ],
+}

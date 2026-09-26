@@ -1,0 +1,51 @@
+name: Deploy portfolio
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: pages
+  cancel-in-progress: false
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - name: Configure repository paths
+        run: |
+          REPO_NAME="${GITHUB_REPOSITORY#*/}"
+          if [[ "$REPO_NAME" == *.github.io ]]; then
+            echo "NUXT_APP_BASE_URL=/" >> "$GITHUB_ENV"
+          else
+            echo "NUXT_APP_BASE_URL=/$REPO_NAME/" >> "$GITHUB_ENV"
+          fi
+          echo "NUXT_PUBLIC_SOURCE_URL=https://github.com/$GITHUB_REPOSITORY" >> "$GITHUB_ENV"
+          echo "NUXT_PUBLIC_LIVE_API_URL=${{ vars.LIVE_API_URL }}" >> "$GITHUB_ENV"
+      - run: npm ci
+      - run: npm test
+      - run: npm run typecheck
+      - run: npm run format:check
+      - run: npm run recordings:release
+      - run: npm run build
+      - run: npx playwright install --with-deps chromium
+      - run: npm run test:base-path
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: .output/public
+  deploy:
+    needs: build
+    permissions:
+      pages: write
+      id-token: write
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4

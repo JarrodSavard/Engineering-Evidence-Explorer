@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Engineering Evidence Explorer — Showcase video</title>
+  <style>
+    @font-face {
+      font-family: News;
+      src: url(assets/serif.woff2);
+    }
+    @font-face {
+      font-family: DM;
+      src: url(assets/sans.woff2);
+    }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      background: #f5f5ef;
+      color: #203f38;
+      font: 17px/1.6 DM;
+      margin: 0;
+    }
+    main {
+      max-width: 1280px;
+      margin: auto;
+      padding: 45px 36px 70px;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 20px;
+    }
+    h1 {
+      font: 48px/1.1 News;
+      margin: 15px 0;
+    }
+    h2 {
+      font: 29px News;
+    }
+    a {
+      color: #176b57;
+      text-underline-offset: 4px;
+    }
+    p {
+      color: #506b63;
+    }
+    video {
+      width: 100%;
+      display: block;
+      background: #163e34;
+      aspect-ratio: 16/9;
+      margin: 26px 0;
+      border: 1px solid #c5d4c8;
+    }
+    .eyebrow {
+      font-size: 13px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+    .downloads,
+    .chapters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .downloads a,
+    button {
+      padding: 11px 17px;
+      border: 1px solid #b7cbbf;
+      color: #185341;
+      background: #edf2e8;
+      text-decoration: none;
+      font: 15px DM;
+      cursor: pointer;
+    }
+    .downloads a:first-child {
+      color: #f6f6ed;
+      background: #1c6b56;
+    }
+    .chapters {
+      margin: 25px 0;
+    }
+    .chapters button {
+      border: 0;
+      border-bottom: 1px solid #b7cbbf;
+      background: transparent;
+      padding: 9px 11px;
+    }
+    button:hover,
+    a:hover {
+      filter: brightness(0.92);
+    }
+    :focus-visible {
+      outline: 3px solid #328b6b;
+      outline-offset: 4px;
+    }
+    .foot {
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid #cbd7cd;
+      font-size: 14px;
+    }
+    details {
+      margin-top: 25px;
+    }
+    summary {
+      cursor: pointer;
+    }
+    #transcript {
+      max-width: 870px;
+      white-space: pre-line;
+    }
+    small {
+      color: #557468;
+    }
+    @media (max-width: 700px) {
+      main {
+        padding: 24px 16px;
+      }
+      header {
+        display: block;
+      }
+      h1 {
+        font-size: 38px;
+      }
+      .downloads a {
+        flex: 1;
+        text-align: center;
+      }
+    }
+  </style>
+  <main>
+    <header>
+      <div>
+        <span class="eyebrow">Jarrod Savard / Portfolio showcase</span>
+        <h1>Engineering Evidence Explorer</h1>
+      </div>
+      <small>{{DURATION}} · Male narration · Captions included</small>
+    </header>
+    <p>A question, the tools behind it, and the evidence that makes the answer inspectable.</p>
+    <video
+      controls
+      playsinline
+      preload="metadata"
+      poster="poster.jpg"
+      aria-label="Engineering Evidence Explorer showcase video"
+    >
+      <source src="engineering-evidence-explorer-1080p.mp4" type="video/mp4" />
+    </video>
+    <div class="downloads">
+      <a href="engineering-evidence-explorer-1080p.mp4" download>Download 1080p</a
+      ><a href="engineering-evidence-explorer-4k.mp4" download>Download 4K</a
+      ><a href="captions.srt" download>Caption file</a
+      ><a href="transcript.txt" download>Transcript</a>
+    </div>
+    <div class="chapters" aria-label="Video chapters">{{CHAPTERS}}</div>
+    <details>
+      <summary>Read the narration</summary>
+      <p id="transcript"></p>
+    </details>
+    <div class="foot">
+      Narration: {{VOICE}}, ElevenLabs · Original instrumental music<br />Actual application
+      captures. Genuine local MCP run. Editorial timing compressed. All team members and records are
+      fictional.<br />© 2026 Jarrod Savard. <a href="credits.txt">Production credits</a>
+    </div>
+  </main>
+  <script>
+    const video = document.querySelector('video')
+    document.querySelectorAll('[data-time]').forEach((b) =>
+      b.addEventListener('click', () => {
+        video.currentTime = Number(b.dataset.time)
+        video.focus()
+      }),
+    )
+    fetch('transcript.txt')
+      .then((r) => r.text())
+      .then((t) => (document.querySelector('#transcript').textContent = t))
+  </script>
+</html>
