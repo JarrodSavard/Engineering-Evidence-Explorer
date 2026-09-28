@@ -1,0 +1,2 @@
+# Keep text files in the LF format expected by Prettier on every OS.
+* text=auto eol=lf
